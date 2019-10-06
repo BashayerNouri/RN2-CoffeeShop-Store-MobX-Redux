@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { Spinner } from "native-base";
 import HomePage from "./Components/HomePage";
+import { Provider } from "react-redux";
+
+import store from "./store/reducers/index";
 
 export default class App extends Component {
   state = {
@@ -19,6 +22,8 @@ export default class App extends Component {
     if (this.state.loading) {
       return <Spinner color="white" />;
     }
-    return <HomePage />;
+    <Provider store={store}>
+      return <HomePage />;
+    </Provider>;
   }
 }
